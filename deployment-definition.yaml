@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: weather-app
+    type: front-end
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weather-app
+      type: front-end
+  template:
+    metadata:
+      labels:
+        app: weather-app
+        type: front-end
+    spec:
+      containers:
+        - name: weather-app
+          image: hamster01/flask:latest
+          ports:
+            - containerPort: 8000
