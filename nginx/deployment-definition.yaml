@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: weather-app
-          image: hamster01/flask:latest
+          image: hamster01/flask:666
           ports:
             - containerPort: 8000
