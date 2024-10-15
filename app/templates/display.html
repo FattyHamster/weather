@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ data.address }} Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+	    background-color: {{ bg_color }};
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .info {
+            background-color: #f9f9f9;
+            border-left: 4px solid #007bff;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .day-details {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fafafa;
+        }
+        .day-details h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .day-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body style="background-color: red;">>
+
+    <div class="container">
+        <h2>Location: {{ data.address }}</h2>
+        {% if data %}
+            <div class="info">
+                <p><strong>Country:</strong> {{ data.resolved }}</p>
+
+                {% for day, details in data.days.items() %}
+                    <div class="day-details">
+                        <h3>Details for {{ details.datetime }}</h3>
+                        <p><strong>Temperature:</strong> {{ details.temp }} °C</p>
+                        <p><strong>Description:</strong> {{ details.description }}</p>
+                        <p><strong>Humidity:</strong> {{ details.humidity }} %</p>
+                        <p><strong>Morning Temperature:</strong> {{ details.morning_temp }} °C</p>
+                        <p><strong>Night Temperature:</strong> {{ details.night_temp }} °C</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
