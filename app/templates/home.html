@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+</head>
+<body>
+  <form method="POST" action="/">
+    <p>Enter Country/City:</p>
+    <p><input type="text" name="location" /></p>
+    <p><input type="submit" value="Submit" /></p>
+  </form>
+
+  <hr>
+
+  <!-- Existing link/button for downloading sky image -->
+  <a href="{{ url_for('downloadskies') }}" class="btn">Download Sky Image</a>
+
+  <!-- New form for DynamoDB interaction -->
+  <form method="POST" action="/dynamodb">
+    <p><input type="submit" value="Activate DynamoDB" /></p>
+  </form>
+</body>
+</html>
